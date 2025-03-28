@@ -4,11 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const imageDisplay = document.getElementById("image");
   const voteCount = document.getElementById("vote-count");
   const votesForm = document.getElementById("votes-form");
+  const reset = document.getElementById("reset-btn");
 
   let currentCharacter = null;
 
   function fetchAllCharacters() {
-    fetch("./characters.json")
+    fetch("http://localhost:3000/characters")
       .then((response) => response.json())
       .then((characters) => {
         renderCharacterBar(characters);
@@ -31,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   function fetchCharacter(id) {
-    fetch(`./characters/${id}`)
+    fetch(`http://localhost:3000/characters/${id}`)
       .then((response) => response.json())
       .then((character) => {
         displayCharacterDetails(character);
@@ -58,6 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  fetchAllCharacters();
+  reset.addEventListener("click", () => {
+    voteCount.textContent = "0";
+  });
 
+  fetchAllCharacters();
 });
