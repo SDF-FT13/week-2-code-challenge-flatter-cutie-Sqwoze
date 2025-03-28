@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentCharacter = null;
 
   function fetchAllCharacters() {
-    fetch("http://localhost:3000/characters")
+    fetch("./characters.json")
       .then((response) => response.json())
       .then((characters) => {
         renderCharacterBar(characters);
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   function fetchCharacter(id) {
-    fetch(`http://localhost:3000/characters/${id}`)
+    fetch(`./characters/${id}`)
       .then((response) => response.json())
       .then((character) => {
         displayCharacterDetails(character);
